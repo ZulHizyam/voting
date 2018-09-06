@@ -14,6 +14,24 @@ require("navigation_stud.php");
 
   </head>
   <body>
+       <html>
+    <head>
+    
+    </head>
+    <body>
+        <!DOCTYPE html>
+ 
+<video width="850" height="" autoplay loop>
+<source src="../latest/includes/Ayy.MOV" type="video/mp4">
+Your browser does not support the video tag.
+
+</video>
+
+</body>
+</html>
+
+    </body>
+</html>                            
   	
             
             

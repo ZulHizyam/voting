@@ -7,6 +7,8 @@ unset($_SESSION['NAME']);
 unset($_SESSION['COURSE']);
 unset($_SESSION['YEAR']);
 unset($_SESSION['STUD_ID']);
+unset($_SESSION['PASS']);
+
 ?>
 <html>
   <head>
@@ -40,8 +42,16 @@ unset($_SESSION['STUD_ID']);
                         <label for="stud_id">Student ID</label>
                         <input type="text" name="stud_id" id="stud_id" class="form-control" autocomplete="off">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <br><br>
+                        <div class="form-group has-feedback">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" autocomplete="off">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                        
                     </div>
                         <button type="submit" name="submit" class="btn btn-info">Submit</button>
+                    
                 </form>
             </div>
         </div>

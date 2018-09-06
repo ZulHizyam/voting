@@ -49,7 +49,7 @@ require("./classes/Organization.php")
 	                      <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
 	                        <ul class="dropdown-menu animated fadeInUp">
-	                          <li><a href="profile.html">Profile</a></li>
+	                          <li><a href="profile.php">Profile</a></li>
 	                          <li><a href="../admin">Logout</a></li>
 	                        </ul>
 	                      </li>
@@ -186,7 +186,8 @@ require("./classes/Organization.php")
 </div>
     </div>
     </div>
-    
+        </div>
+    </div>
 
 
 

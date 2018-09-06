@@ -57,6 +57,7 @@ unset($_SESSION['ADMIN_NAME']);
         </div>
     </div>
 </div>
-
+    </div>
+    </div>
 </body>
 </html>

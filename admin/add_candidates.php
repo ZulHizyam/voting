@@ -40,7 +40,8 @@ require("./classes/Nominees.php");
         }
     </script>
 </head>
-<body><div class="header">
+<body>
+    <div class="header">
 	     <div class="container">
 	        <div class="row">
 	           <div class="col-md-5">
@@ -68,7 +69,7 @@ require("./classes/Nominees.php");
 	                      <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
 	                        <ul class="dropdown-menu animated fadeInUp">
-	                          <li><a href="profile.html">Profile</a></li>
+	                          <li><a href="profile.php">Profile</a></li>
 	                          <li><a href="../admin">Logout</a></li>
 	                        </ul>
 	                      </li>
@@ -176,6 +177,7 @@ require("./classes/Nominees.php");
             </form>
         </div>
           </div>
+          </div>
     
     
 
@@ -184,7 +186,7 @@ require("./classes/Nominees.php");
         $rtnReadNominees = $readNominees->READ_NOMINEE();
         ?>
         <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-5">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
             <center><h4><b>List Of Nominees </b></h4></center><br><hr>
@@ -221,7 +223,7 @@ require("./classes/Nominees.php");
     </div>
     </div>
             </div>
-        </div>
+        
     </div>
         </div>
 

@@ -14,7 +14,21 @@ require("../includes/navigation.php");
 
   </head>
   <body>
-  	
+  	<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-11">
+	  					<div class="content-box-large">
+			  				<div class="panel-heading">
+                                <center><h1>Vote Statistic</h1></center>
+                                <div style="width: 90%;"></div>
+<canvas id="lineChart" height="130" width=""></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+                            </div>
+            </div>
+        </div>
+        </div>
+      </div>
      
   
 

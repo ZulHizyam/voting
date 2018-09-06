@@ -76,20 +76,19 @@ class Voting
         return $result;
     }
 
-    public function VOTE_NOMINEE($org, $pos, $candidate_id, $voters_id) {
+     public function VOTE_NOMINEE($org,  $voters_id) {
         global $db;
 
         //Check to see if the voter votes already
         $sql = "SELECT *
                 FROM votes
                 WHERE course = ?
-                AND pos = ?
                 AND voters_id = ?
                 LIMIT 1";
         if(!$stmt = $db->prepare($sql)) {
             echo $stmt->error;
         } else {
-            $stmt->bind_param("ssi", $org, $pos, $voters_id);
+            $stmt->bind_param("si", $org, $voters_id);
             $stmt->execute();
             $result = $stmt->get_result();
         }
@@ -98,11 +97,11 @@ class Voting
             echo "<div class='alert alert-danger'>Sorry you voted in that position already.</div>";
         } else {
             //Vote successful.
-            $sql = "INSERT INTO votes(course, pos, candidate_id, voters_id)VALUES(?, ?, ?, ?)";
+            $sql = "INSERT INTO votes(course, voters_id)VALUES(?, ?)";
             if(!$stmt = $db->prepare($sql)) {
                 echo $stmt->error;
             } else {
-                $stmt->bind_param("ssii", $org, $pos, $candidate_id, $voters_id);
+                $stmt->bind_param("si", $org, $voters_id);
             }
 
             if($stmt->execute()) {

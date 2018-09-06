@@ -1,3 +1,5 @@
+
+
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/styles.css" rel="stylesheet">
@@ -29,7 +31,7 @@
 	                      <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
 	                        <ul class="dropdown-menu animated fadeInUp">
-	                          <li><a href="profile.html">Profile</a></li>
+	                          <li><a href="profile.php">Profile</a></li>
 	                          <li><a href="../admin">Logout</a></li>
 	                        </ul>
 	                      </li>

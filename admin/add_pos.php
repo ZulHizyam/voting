@@ -44,7 +44,7 @@ require("./classes/Position.php");
 	                      <li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
 	                        <ul class="dropdown-menu animated fadeInUp">
-	                          <li><a href="profile.html">Profile</a></li>
+	                          <li><a href="profile.php">Profile</a></li>
 	                          <li><a href="../admin">Logout</a></li>
 	                        </ul>
 	                      </li>
@@ -104,13 +104,16 @@ require("./classes/Position.php");
             </form>
         </div>
         </div>
+        </div>
 
      <?php
         $readPos = new Position();
         $rtnReadPos = $readPos->READ_POS();
         ?>
-        <div class="row">
-  				<div class="col-md-12">
+        
+  				<div class="col-md-5">
+                    <div class="row">
+                    
   					<div class="content-box-large">
 		  				<div class="panel-heading">
                          <center><h4><b>List Of Positions</b></h4></center><br>
@@ -137,9 +140,11 @@ require("./classes/Position.php");
         </div>
     </div>
 </div>
-                    </div>
-     </div>
+    </div>
+    </div>
 </div>
+    </div>
+        </div>
       </div>
     </body>
 </html>
