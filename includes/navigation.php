@@ -33,6 +33,7 @@
 	                        <ul class="dropdown-menu animated fadeInUp">
 	                          <li><a href="profile.php">Profile</a></li>
 	                          <li><a href="../admin">Logout</a></li>
+                                
 	                        </ul>
 	                      </li>
 	                    </ul>

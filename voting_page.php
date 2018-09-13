@@ -75,34 +75,34 @@ require("./admin/classes/Organization.php");
              </div>
 		  </div>
             
-            <?php
-            if(isset($_POST['vote'])) {
-                $org            = isset($_POST['course']);
-                $voters_id      = isset($_POST['voters_id']);
-               
-                $insertVote = new Voting();
-                $rtnInsertVote = $insertVote->VOTE_NOMINEE($org, $voters_id);
-            }
-
-            ?>
-            
-            
-            
-        <?php
-        $readNominees = new Nominees();
-        $rtnReadNominees = $readNominees->READ_NOMINEE();
-        ?>
-
+                        
+        
+<div class="voting-con">
         <div class="col-md-10">
             <div class="row">
       <div class="col-md-11">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
             <center><h4><b>List Of Nominees </b></h4></center><br><hr>
-                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" role="form">                
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" role="form">
+                    <?php
+                    $readNominees = new Nominees();
+                    $rtnReadNominees = $readNominees->READ_NOMINEE();
+                    ?>
+                    <?php if($rtnReadNominees) { ?>
                 <div class="table-responsive">
-                <?php if($rtnReadNominees) { ?>
                 <table class="table table-bordered table-condensed table-striped">
+                    <?php
+            if(isset($_POST['vote'])) {
+                $org            = isset($_POST['course']);
+                $candidate_id   = isset($_POST['nominee']);
+                $voters_id      = isset($_POST['voters_id']);
+                
+                $insertVote = new Voting();
+                $rtnInsertVote = $insertVote->VOTE_NOMINEE($org, $candidate_id ,$voters_id);
+            }
+
+            ?>
                     <tr>
                         <th>Course</th>
                         <th>Name</th>
@@ -114,18 +114,21 @@ require("./admin/classes/Organization.php");
                         <td><?php echo $rowNom['course']; ?></td>
                         <td><?php echo $rowNom['name']; ?></td>
                         <td><?php echo $rowNom['stud_id']; ?></td>
-                        <td><?php
+                        <td><?php 
                     $validateVote = new Voting();
-                    $rtnValVote = $validateVote->VALIDATE_VOTE($rowNom['course'], $rowNom['pos'], isset($_SESSION['ID']));
+                    $rtnValVote = $validateVote->VALIDATE_VOTE($rowNom['course'],isset($_SESSION['id']));
                     ?>
-                        <button class="btn btn-success" type="submit" name="vote" value="voters_id">
+                        <button type="submit" name="vote"
                                 <?php if($rtnValVote->num_rows > 0) { ?>
-                                <?php echo "class=btn btn-default disabled >"; ?>
+                                <?php echo "class='btn btn-default disabled'>"; ?>
                                 <?php } else { ?>
-                                <?php echo ""; ?>
+                                <?php echo "class='btn btn-info'>"; ?>
                                 <?php } //End if ?>
                             Vote
-                          </button>      </td>
+                                
+                                
+                        </button>      
+                        </td>
                     </tr>
                     
                     <?php } //End while ?>
@@ -134,6 +137,7 @@ require("./admin/classes/Organization.php");
                 <?php } //end if ?>
             </div>
                 </form>
+                            </div>
         </div>
     </div>
 </div>

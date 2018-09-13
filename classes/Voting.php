@@ -21,7 +21,7 @@ class Voting
         return $result;
     }
 
-    public function READ_POSITION() {
+    public function READ_POSITION($org) {
         global $db;
 
         $sql = "SELECT *
@@ -38,7 +38,7 @@ class Voting
         return $result;
     }
 
-    public function READ_NOMINEES($org) {
+    public function READ_NOMINEES($org, $pos) {
         global $db;
 
         $sql = "SELECT *
@@ -47,7 +47,7 @@ class Voting
         if(!$stmt = $db->prepare($sql)) {
             echo $stmt->error;
         } else {
-            $stmt->bind_param("s", $org);
+            $stmt->bind_param("ss", $org, $pos);
             $stmt->execute();
             $result = $stmt->get_result();
         }
@@ -55,20 +55,20 @@ class Voting
         return $result;
     }
 
-    public function VALIDATE_VOTE($org, $pos, $voters_id) {
+    public function VALIDATE_VOTE($org, $voters_id) {
         global $db;
 
         //Check to see if the voter votes already
         $sql = "SELECT *
                 FROM votes
                 WHERE course = ?
-                AND pos = ?
+                
                 AND voters_id = ?
                 LIMIT 1";
         if(!$stmt = $db->prepare($sql)) {
             echo $stmt->error;
         } else {
-            $stmt->bind_param("ssi", $org, $pos, $voters_id);
+            $stmt->bind_param("si", $org , $voters_id);
             $stmt->execute();
             $result = $stmt->get_result();
         }
@@ -88,7 +88,7 @@ class Voting
         if(!$stmt = $db->prepare($sql)) {
             echo $stmt->error;
         } else {
-            $stmt->bind_param("si", $org, $voters_id);
+            $stmt->bind_param   ("si", $org, $voters_id);
             $stmt->execute();
             $result = $stmt->get_result();
         }

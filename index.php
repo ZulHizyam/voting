@@ -1,4 +1,5 @@
 <?php
+//include ("./includes/time.php");
 //Start session
 session_start();
 
@@ -18,8 +19,45 @@ unset($_SESSION['PASS']);
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="./css/styles.css" rel="stylesheet">
-
+<style>
+body{
+    text-align: center;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+h1{
+  color: black;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+ #clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 20px;
+}
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: darkred;
+    display: inline-block;
+}
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: black;
+    display: inline-block;
+}
+smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+</style>
   </head>
+    <body>
 <div class="col-md-10">
     <div class="row">
         <div class="col-md-5 col-md-offset-5">
@@ -41,19 +79,65 @@ unset($_SESSION['PASS']);
                     <div class="form-group has-warning has-feedback">
                         <label for="stud_id">Student ID</label>
                         <input type="text" name="stud_id" id="stud_id" class="form-control" autocomplete="off">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <br><br>
-                        <div class="form-group has-feedback">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" autocomplete="off">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        
+                      
                     </div>
                         
-                    </div>
                         <button type="submit" name="submit" class="btn btn-info">Submit</button>
                     
                 </form>
-            </div>
+                <h3>Time Remaining</h3>
+<div id="clockdiv">
+  <div>
+    <span class="days" id="day"></span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours" id="hour"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes" id="minute"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds" id="second"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+ 
+<p id="demo"></p>
+            <script>
+ 
+var deadline = new Date("sep 14, 2018 17:00:00").getTime();
+
+var x = setInterval(function() {
+ 
+var now = new Date().getTime();
+var t = deadline - now;
+var days = Math.floor(t / (1000 * 60 * 60 * 24));
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((t % (1000 * 60)) / 1000);
+document.getElementById("day").innerHTML =days ;
+document.getElementById("hour").innerHTML =hours;
+document.getElementById("minute").innerHTML = minutes; 
+document.getElementById("second").innerHTML =seconds; 
+if (t < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "<h2>TIME UP</h2>";
+        document.getElementById("day").innerHTML ='0';
+        document.getElementById("hour").innerHTML ='0';
+        document.getElementById("minute").innerHTML ='0' ; 
+        document.getElementById("second").innerHTML = '0'; }
+}, 1000);
+</script>
+                                </div>
         </div>
     </div>
 </div>
+    </div>
+    </div>
+        </body>
+</html>
+
