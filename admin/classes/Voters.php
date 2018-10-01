@@ -8,7 +8,7 @@
  */
 class Voters
 {
-    public function INSERT_VOTER($name, $course, $year, $stud_id) {
+    public function INSERT_VOTER($name, $course, $stud_id) {
         global $db;
 
         //Check to see if the voter exists
@@ -28,11 +28,11 @@ class Voters
             echo "<div class='alert alert-danger'>Sorry the voter you entered already exists in the database.</div>";
         } else {
             //Insert voter
-            $sql = "INSERT INTO voters(name, course, year, stud_id)VALUES(?, ?, ?, ?)";
+            $sql = "INSERT INTO voters(name, course, stud_id)VALUES( ?, ?, ?)";
             if(!$stmt = $db->prepare($sql)) {
                 echo $stmt->error;
             } else {
-                $stmt->bind_param("ssss", $name, $course, $year, $stud_id);
+                $stmt->bind_param("sss", $name, $course, $stud_id);
             }
             if($stmt->execute()) {
                 echo "<div class='alert alert-success'>Voter was inserted successfully.</div>";

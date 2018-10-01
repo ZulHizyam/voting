@@ -42,15 +42,10 @@ h1{
 #clockdiv > div{
     padding: 10px;
     border-radius: 3px;
-    background: darkred;
+    background: midnightblue;
     display: inline-block;
 }
-#clockdiv div > span{
-    padding: 15px;
-    border-radius: 3px;
-    background: black;
-    display: inline-block;
-}
+
 smalltext{
     padding-top: 5px;
     font-size: 16px;
@@ -63,30 +58,7 @@ smalltext{
         <div class="col-md-5 col-md-offset-5">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
-            <div class="login-con">
-                <h3>Student Log-in</h3><hr>
-                <?php
-                if(isset($_SESSION['ERROR_MSG_ARRAY']) && is_array($_SESSION['ERROR_MSG_ARRAY']) && COUNT($_SESSION['ERROR_MSG_ARRAY']) > 0) {
-                    foreach($_SESSION['ERROR_MSG_ARRAY'] as $msg) {
-                        echo "<div class='alert alert-danger'>";
-                        echo $msg;
-                        echo "</div>";
-                    }
-                    unset($_SESSION['ERROR_MSG_ARRAY']);
-                }
-                ?>
-                <form method="post" action="process/login.php" role="form">
-                    <div class="form-group has-warning has-feedback">
-                        <label for="stud_id">Student ID</label>
-                        <input type="text" name="stud_id" id="stud_id" class="form-control" autocomplete="off">
-                        
-                      
-                    </div>
-                        
-                        <button type="submit" name="submit" class="btn btn-info">Submit</button>
-                    
-                </form>
-                <h3>Time Remaining</h3>
+                                <h3>Time Remaining</h3>
 <div id="clockdiv">
   <div>
     <span class="days" id="day"></span>
@@ -109,7 +81,7 @@ smalltext{
 <p id="demo"></p>
             <script>
  
-var deadline = new Date("sep 14, 2018 17:00:00").getTime();
+var deadline = new Date("oct 29, 2018 17:00:00").getTime();
 
 var x = setInterval(function() {
  
@@ -125,13 +97,37 @@ document.getElementById("minute").innerHTML = minutes;
 document.getElementById("second").innerHTML =seconds; 
 if (t < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "<h2>TIME UP</h2>";
+        document.getElementById("demo").innerHTML = "<h2>THANKS FOR VOTING!</h2>";
         document.getElementById("day").innerHTML ='0';
         document.getElementById("hour").innerHTML ='0';
         document.getElementById("minute").innerHTML ='0' ; 
         document.getElementById("second").innerHTML = '0'; }
 }, 1000);
 </script>
+            <div class="login-con"><br><br>
+                <h3>Student Log-in</h3><hr>
+                <?php
+                if(isset($_SESSION['ERROR_MSG_ARRAY']) && is_array($_SESSION['ERROR_MSG_ARRAY']) && COUNT($_SESSION['ERROR_MSG_ARRAY']) > 0) {
+                    foreach($_SESSION['ERROR_MSG_ARRAY'] as $msg) {
+                        echo "<div class='alert alert-danger'>";
+                        echo $msg;
+                        echo "</div>";
+                    }
+                    unset($_SESSION['ERROR_MSG_ARRAY']);
+                }
+                ?>
+                <form method="post" action="process/login.php" role="form">
+                    <div class="form-group has-warning has-feedback">
+                        <label for="stud_id">Student ID</label>
+                        <input type="text" name="stud_id" id="stud_id" class="form-control" autocomplete="off">
+                        
+                      
+                    </div>
+                        
+                        <button type="submit" name="submit" class="btn btn-info">Submit</button>
+                    
+                </form>
+                
                                 </div>
         </div>
     </div>

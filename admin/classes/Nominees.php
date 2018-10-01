@@ -9,7 +9,7 @@
 class Nominees
 {
 
-    public function INSERT_NOMINEE($course, $pos, $name, $year, $stud_id) {
+    public function INSERT_NOMINEE($course, $name,$stud_id) {
         global $db;
 
         //Check to see if the nominee already exists in the database.
@@ -29,11 +29,11 @@ class Nominees
             echo "<div class='alert alert-danger'>Sorry the nominee you entered already exist in the database</div>";
         } else {
             //Insert nominee
-            $sql = "INSERT INTO nominees(course, pos, name, year, stud_id)VALUES( ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO nominees(course, name,stud_id)VALUES( ?, ?, ?)";
             if(!$stmt = $db->prepare($sql)) {
                 echo $stmt->error;
             } else {
-                $stmt->bind_param("sssss", $course, $pos, $name, $year, $stud_id);
+                $stmt->bind_param("sss", $course,  $name,  $stud_id);
             }
             if($stmt->execute()) {
                 echo "<div class='alert alert-success'>Nominee was inserted successfully.</div>";

@@ -1,4 +1,5 @@
 <?php
+
 require ("../includes/connection.php");
 
 //Include class Organization

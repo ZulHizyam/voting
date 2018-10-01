@@ -4,6 +4,7 @@ session_start();
 
 unset($_SESSION['ADMIN_ID']);
 unset($_SESSION['ADMIN_NAME']);
+unset($_SESSION['ADMIN_EMAIL']);
 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -15,6 +16,7 @@ unset($_SESSION['ADMIN_NAME']);
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="../css/styles.css" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -49,9 +51,11 @@ unset($_SESSION['ADMIN_NAME']);
                         <input type="password" name="password" id="password" class="form-control" autocomplete="off">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
+                    
                     <div class="form-group">
                         <input type="submit" name="submit" value="Submit" class="btn btn-danger">
                     </div>
+                    <a href='forgotPassword.php'>Forgot Password</a>
                 </form>
             </div>
         </div>

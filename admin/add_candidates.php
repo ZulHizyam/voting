@@ -110,13 +110,11 @@ require("./classes/Nominees.php");
             <?php
             if(isset($_POST['submit'])) {
                 $course     = trim($_POST['course']);
-                $pos        = trim($_POST['position']);
                 $name       = trim($_POST['name']);
-                $year       = trim($_POST['year']);
                 $stud_id    = trim($_POST['stud_id']);
 
                 $insertNominee = new Nominees();
-                $rtnInsertNominee = $insertNominee->INSERT_NOMINEE($course, $pos, $name, $year, $stud_id);
+                $rtnInsertNominee = $insertNominee->INSERT_NOMINEE($course, $name, $stud_id);
             }
             ?>
             <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" role="form">
@@ -141,31 +139,12 @@ require("./classes/Nominees.php");
                 $readPos = new Position();
                 $rtnReadPos = $readPos->READ_POS();
                 ?>
-                <div class="form-group-sm">
-                    <label for="position">Position</label>
-                    <select required name="position" class="form-control" id="org-list" onchange="getPos(this.value);">
-                            <option value="">*****Select Position*****</option>
-                            <?php while($rowPos = $rtnReadPos->fetch_assoc()) { ?>
-                                <option value="<?php echo $rowPos['pos']; ?>"><?php echo $rowPos['pos']; ?></option>
-                            <?php } //End while ?>
-                        </select>
-                        <?php $rtnReadPos->free(); ?>
-                </div>
+    
                 <div class="form-group-sm">
                     <label for="name">Name</label>
                     <input required type="text" name="name" class="form-control" placeholder="LName, FName MI.">
                 </div>
-                <div class="form-group-sm">
-                    <label for="year">Year</label>
-                    <select required name="year" class="form-control">
-                        <option value="">*****Select Year*****</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
+                
                 <div class="form-group-sm">
                     <label for="stud_id">Student ID</label>
                     <input required type="text" name="stud_id" class="form-control">
@@ -195,9 +174,7 @@ require("./classes/Nominees.php");
                 <table class="table table-bordered table-condensed table-striped">
                     <tr>
                         <th>Course</th>
-                        <th>Position</th>
                         <th>Name</th>
-                        <th>Year</th>
                         <th>Student ID</th>
                         <th><span class="glyphicon glyphicon-edit"></span></th>
                         <th><span class="glyphicon glyphicon-remove"></span></th>
@@ -205,9 +182,7 @@ require("./classes/Nominees.php");
                     <?php while($rowNom = $rtnReadNominees->fetch_assoc()) { ?>
                     <tr>
                         <td><?php echo $rowNom['course']; ?></td>
-                        <td><?php echo $rowNom['pos']; ?></td>
                         <td><?php echo $rowNom['name']; ?></td>
-                        <td><?php echo $rowNom['year']; ?></td>
                         <td><?php echo $rowNom['stud_id']; ?></td>
                         <td><a href="http://localhost/latest/admin/edit_nominee.php?id=<?php echo $rowNom['id']; ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                         <td><a href="http://localhost/latest/admin/delete_nominee.php?id=<?php echo $rowNom['id']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>

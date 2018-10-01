@@ -91,11 +91,10 @@ require("./classes/Organization.php")
             if(isset($_POST['submit'])) {
                 $name       = trim($_POST['name']);
                 $course     = trim($_POST['course']);
-                $year       = trim($_POST['year']);
                 $stud_id    = trim($_POST['stud_id']);
 
                 $insertVoter = new Voters();
-                $rtnInsertVoter = $insertVoter->INSERT_VOTER($name, $course, $year, $stud_id);
+                $rtnInsertVoter = $insertVoter->INSERT_VOTER($name, $course, $stud_id);
             }
             ?>
             <h4>Add Voters</h4><hr>
@@ -120,17 +119,6 @@ require("./classes/Organization.php")
                         </select>
                         <?php $rtnReadOrg->free(); ?>
                     <?php } //End if ?>
-                </div>
-                <div class="form-group-sm">
-                    <label for="year">Year</label>
-                    <select required name="year" class="form-control">
-                        <option value="">*****Select Year*****</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
                 </div>
                 <div class="form-group-sm">
                     <label for="stud_id">Student ID</label>
@@ -161,7 +149,7 @@ require("./classes/Organization.php")
                 <table class="table table-bordered table-condensed table-striped">
                     <tr>
                         <th>Name</th>
-                        <th>Course/Year</th>
+                        <th>Course</th>
                         <th>Student ID</th>
                         <th><span class="glyphicon glyphicon-edit"></span></th>
                         <th><span class="glyphicon glyphicon-remove"></span></th>
@@ -169,7 +157,7 @@ require("./classes/Organization.php")
                     <?php while($rowVoter = $rtnReadVoters->fetch_assoc()) { ?>
                     <tr>
                         <td><?php echo $rowVoter['name']; ?></td>
-                        <td><?php echo $rowVoter['course'] . "-" . $rowVoter['year']; ?></td>
+                        <td><?php echo $rowVoter['course']; ?></td>
                         <td><?php echo $rowVoter['stud_id']; ?></td>
                         <td><a href="http://localhost/latest/admin/edit_voter.php?id=<?php echo $rowVoter['id']; ?>"><span class="glyphicon glyphicon-edit"></span></a></td>
                         <td><a href="http://localhost/latest/admin/delete_voter.php?id=<?php echo $rowVoter['id']; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>

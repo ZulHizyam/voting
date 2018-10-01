@@ -1,4 +1,5 @@
 <?php
+
 require("../includes/connection.php");
 require("../includes/navigation.php");
 ?>
